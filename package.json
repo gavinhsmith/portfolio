@@ -1,5 +1,12 @@
 {
   "name": "portfolio",
+  "description": "My Portfolio Website! :P",
+  "version": "0.1.0",
+  "author": {
+    "name": "Gavin Smith",
+    "email": "me@gavinhsmith.com",
+    "url": "https://gavinhsmith.com"
+  },
   "type": "module",
   "private": true,
   "scripts": {
