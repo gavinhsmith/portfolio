@@ -1,6 +1,6 @@
-# Nuxt Minimal Starter
+# Portfolio Website
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+The source for [gavinhsmith.com](https://gavinhsmith.com).
 
 ## Setup
 
@@ -71,5 +71,3 @@ yarn preview
 # bun
 bun run preview
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
