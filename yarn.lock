@@ -4715,16 +4715,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nuxt-app@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "nuxt-app@workspace:."
-  dependencies:
-    nuxt: "npm:^4.1.2"
-    vue: "npm:^3.5.22"
-    vue-router: "npm:^4.5.1"
-  languageName: unknown
-  linkType: soft
-
 "nuxt@npm:^4.1.2":
   version: 4.1.2
   resolution: "nuxt@npm:4.1.2"
@@ -5224,6 +5214,16 @@ __metadata:
   checksum: 10c0/d2bbddc5b81bd4741e1529c08ef4c5f1542bbdcf63498b73b8e1d84cff71806d1b8b1577800549bb569cb7aa20056257677b979bff48c97967cba7e64f72ae12
   languageName: node
   linkType: hard
+
+"portfolio@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "portfolio@workspace:."
+  dependencies:
+    nuxt: "npm:^4.1.2"
+    vue: "npm:^3.5.22"
+    vue-router: "npm:^4.5.1"
+  languageName: unknown
+  linkType: soft
 
 "postcss-calc@npm:^10.1.1":
   version: 10.1.1
