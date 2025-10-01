@@ -1,0 +1,58 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Nuxt: Dev (yarn + inspector)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["dev"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "env": {
+        "NODE_OPTIONS": "--inspect=0.0.0.0:9229"
+      },
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "name": "Nuxt: Attach to Inspector (9229)",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "address": "localhost",
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": "${workspaceFolder}",
+      "restart": true
+    },
+    {
+      "name": "Nuxt: Build & Preview",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      // Use platform overrides so the build+preview command runs correctly on each OS
+      "windows": {
+        "runtimeExecutable": "pwsh",
+        "runtimeArgs": ["-NoProfile", "-Command", "yarn build; yarn preview"]
+      },
+      "linux": {
+        "runtimeExecutable": "bash",
+        "runtimeArgs": ["-lc", "yarn build && yarn preview"]
+      },
+      "osx": {
+        "runtimeExecutable": "bash",
+        "runtimeArgs": ["-lc", "yarn build && yarn preview"]
+      }
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Dev + Attach",
+      "configurations": [
+        "Nuxt: Dev (yarn + inspector)",
+        "Nuxt: Attach to Inspector (9229)"
+      ]
+    }
+  ]
+}
