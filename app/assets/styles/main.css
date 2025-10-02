@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+@theme {
+  --font-accent: "Bitcount", "JetBrains Mono", "Inconsolata", monospace;
+
+  --color-light: rgba(241, 242, 246, 1);
+  --color-dark: rgba(51, 46, 60, 1);
+  --color-accent-dark: rgba(204, 41, 54, 1);
+  --color-accent-light: rgba(238, 98, 88, 1);
+  --color-secondary: rgba(230, 199, 156, 1);
+}
