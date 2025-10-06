@@ -4,11 +4,32 @@
   --font-accent: "Bitcount", "JetBrains Mono", "Inconsolata", monospace;
   --font-main: "Zain", "Outfit", "Noto Sans", Arial;
 
-  --color-white: rgba(240, 240, 240, 1);
+  --color-white: rgba(245, 245, 245, 1);
   --color-black: rgba(15, 15, 15, 1);
-  --color-light: rgba(241, 242, 246, 1);
+  --color-light: rgba(239, 240, 244, 1);
   --color-dark: rgba(51, 46, 60, 1);
   --color-accent-dark: rgba(204, 41, 54, 1);
   --color-accent-light: rgba(238, 98, 88, 1);
   --color-secondary: rgba(230, 199, 156, 1);
+}
+
+/* Left-to-right underline on links. */
+a.link {
+  /* Disable regular underline. */
+  text-decoration: none;
+
+  /* Create gradient to emulate the underline, hidden by default */
+  background-image: linear-gradient(currentColor 0 0);
+  background-position: 0 100%;
+  background-size: 0% 0.1em;
+  background-repeat: no-repeat;
+
+  /* Set transitions for gradient. Also do color as this approch breaks transition-colors w tailwind... */
+  transition: background-size 300ms, background-position 0ms 300ms,
+    background-image 300ms, color 150ms;
+}
+a.link:hover {
+  /** Fill full width, looks like growing underline :P */
+  background-position: 100% 100%;
+  background-size: 100% 0.1em;
 }

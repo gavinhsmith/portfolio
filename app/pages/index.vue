@@ -1,4 +1,3 @@
 <template>
-  <NavBumper />
-  <div></div>
+  <div class="w-full h-screen"></div>
 </template>
