@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-row justify-between items-center h-16 px-4 md:px-16 bg-dark text-light text-lg md:text-2xl font-accent lowercase"
+    class="absolute flex flex-row justify-between items-center w-full h-16 px-4 md:px-16 bg-light text-dark dark:bg-dark dark:text-light text-lg md:text-2xl font-accent lowercase"
   >
     <NavLogo />
 

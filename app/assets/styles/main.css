@@ -2,7 +2,10 @@
 
 @theme {
   --font-accent: "Bitcount", "JetBrains Mono", "Inconsolata", monospace;
+  --font-main: "Zain", "Outfit", "Noto Sans", Arial;
 
+  --color-white: rgba(240, 240, 240, 1);
+  --color-black: rgba(15, 15, 15, 1);
   --color-light: rgba(241, 242, 246, 1);
   --color-dark: rgba(51, 46, 60, 1);
   --color-accent-dark: rgba(204, 41, 54, 1);

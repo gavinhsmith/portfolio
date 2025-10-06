@@ -1,1 +1,4 @@
-<template></template>
+<template>
+  <NavBumper />
+  <div></div>
+</template>
