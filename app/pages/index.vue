@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full p-18">
+  <div class="w-full h-full px-18 py-17">
     <!-- Pushes down the content to not be behind the navbar. -->
     <NavHeadBumper />
 
@@ -24,6 +24,7 @@
             'C / C++',
             'Rust',
             'mobile',
+            'desktop',
             'frontend',
             'backend',
             'full-stack',
@@ -39,7 +40,13 @@
     </div>
     <div class="my-10">
       <p class="text-3xl">
-        Here you can find my professional/personal projects and affiliations.
+        I am currently an undergraduate student at the
+        <a
+          href="https://wisc.edu"
+          target="_blank"
+          class="link link-sm text-accent-light italic"
+          >University of Wisconsin-Madison</a
+        >. Here you can find my professional/personal projects and affiliations.
         Currently, this corner of the internet is
         <strong>under construction</strong> due to my classwork occupying most
         of my time. Keep in touch with me below:
