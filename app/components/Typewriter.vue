@@ -19,18 +19,26 @@ const props = defineProps({
     type: Boolean,
     required: false,
   },
+  colorizeLast: {
+    type: Boolean,
+    required: false,
+  },
 });
 
 // Define the current text displayed and the carot display indicator
 const value = ref("");
 const carot = ref(true);
 const carotOn = ref(true);
+let colorize = ref(false);
 
 // Get the final values of the component.
 const words = props.words;
 const loop = props.loop ?? true;
 const wait = props.wait ?? 1500;
 const immediate = props.immediate ?? false;
+const colorizeLast = props.colorizeLast ?? false;
+
+// Internal states
 let currentWord = 0;
 let currentChar = 0;
 
@@ -77,6 +85,10 @@ onMounted(() => {
 
             // When the string is empty again, clear "backspace" interval and start over with next word after waiting period.
             if (value.value.length == 0) {
+              // Check if we are going to the last value, and colorized accordingly.
+              colorize.value = currentWord == words.length - 1 && colorizeLast;
+
+              // Restart the loop.
               clearInterval(subintv);
               setTimeout(createWordInterval, wait);
             }
@@ -93,7 +105,7 @@ onMounted(() => {
 
 <template>
   <div class="flex flex-row justify-start items-end">
-    <span>{{ value }}</span>
+    <span :class="colorize ? 'text-accent-light' : ''">{{ value }}</span>
     <!-- Set opacity of carot symbol based on carot value. Disable element if it is no longer needed. -->
     <span v-if="carotOn" :class="carot ? 'opacity-100' : 'opacity-0'">|</span>
   </div>

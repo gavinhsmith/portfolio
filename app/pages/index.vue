@@ -29,6 +29,7 @@
           :wait="200"
           :loop="false"
           :immediate="true"
+          :colorize-last="true"
         ></Typewriter>
       </h1>
       <h1>developer.</h1>
