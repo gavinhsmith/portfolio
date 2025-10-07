@@ -56,3 +56,8 @@ a.button {
 a.button:hover {
   @apply shadow-2xl;
 }
+
+/* Strong text */
+strong {
+  @apply font-extrabold text-accent-light;
+}

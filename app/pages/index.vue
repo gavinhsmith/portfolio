@@ -5,7 +5,10 @@
 
     <!-- Main body... -->
     <div class="text-5xl lg:text-7xl flex flex-col">
-      <h1>Howdy! I'm <strong class="font-extrabold">Gavin</strong>.</h1>
+      <h1>
+        Howdy! I'm
+        <strong>Gavin</strong>.
+      </h1>
       <h1>Your next</h1>
       <h1 class="font-accent">
         <Typewriter
