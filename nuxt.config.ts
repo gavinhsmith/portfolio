@@ -4,7 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
-  modules: ["@nuxt/fonts"],
+  modules: ["@nuxt/fonts", "@nuxt/icon"],
   css: ["~/assets/styles/main.css"],
   vite: {
     plugins: [tailwindcss()],
@@ -17,5 +17,9 @@ export default defineNuxtConfig({
       },
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
+  },
+  icon: {
+    mode: "css",
+    cssLayer: "base",
   },
 });

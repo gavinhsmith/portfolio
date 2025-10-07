@@ -1,6 +1,6 @@
 # Portfolio Website
 
-The source for [gavinhsmith.com](https://gavinhsmith.com).
+The source for [gavinhsmith.com](https://gavinhsmith.com). Build with Love and [Nuxt](https://nuxt.com).
 
 ## Setup
 
