@@ -1,12 +1,11 @@
 <template>
   <div
-    class="flex flex-row justify-between items-center h-12 w-full px-4 lg:px-8 text-xs lg:text-lg font-accent bg-light text-dark dark:bg-dark dark:text-light"
+    class="flex flex-row justify-between items-center h-12 w-full gap-4 px-4 lg:px-8 text-xs lg:text-lg font-accent bg-light text-dark dark:bg-dark dark:text-light"
   >
-    <div class="w-1/2 lg:w-1/3 flex flex-row justify-start items-center">
+    <div class="lg:w-1/3 flex flex-row justify-start items-center">
       <div class="flex flex-row justify-start items-center">
-        <span>(c) 2025 -</span>
-        <span class="ml-2 hidden lg:block">Gavin Smith</span>
-        <span class="ml-2 block lg:hidden">GS</span>
+        <span>(c) 2025</span>
+        <span class="ml-2 hidden lg:block">- Gavin Smith</span>
       </div>
     </div>
     <div class="w-1/3 hidden lg:flex flex-row justify-center items-center">
@@ -20,12 +19,8 @@
         >)</span
       >
     </div>
-    <div class="w-1/2 lg:w-1/3 flex flex-row justify-end items-center">
-      <Typewriter
-        :words="['I\'m not that creative...']"
-        :loop="false"
-        :wait="750"
-      />
+    <div class="lg:w-1/3 flex flex-row justify-end items-center text-right">
+      <Typewriter :words="['#work-in-progress']" :loop="false" :wait="750" />
     </div>
   </div>
 </template>
