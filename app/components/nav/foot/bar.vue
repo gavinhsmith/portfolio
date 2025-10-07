@@ -6,7 +6,11 @@
       <span>(c) 2025 - Gavin Smith</span>
     </div>
     <div class="flex flex-row justify-end items-center">
-      <span>Have a good day!</span>
+      <Typewriter
+        :words="['Howdy!', 'Hello!', 'Hi!', 'Yo!']"
+        :loop="true"
+        :wait="750"
+      />
     </div>
   </div>
 </template>

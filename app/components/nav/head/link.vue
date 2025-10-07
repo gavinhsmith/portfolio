@@ -1,5 +1,10 @@
 <script setup>
-defineProps(["href"]);
+defineProps({
+  href: {
+    type: String,
+    required: true,
+  },
+});
 </script>
 
 <template>
