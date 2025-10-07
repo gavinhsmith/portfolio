@@ -15,17 +15,29 @@ const props = defineProps({
     type: Number,
     required: false,
   },
+  immediate: {
+    type: Boolean,
+    required: false,
+  },
 });
 
-// Define the current text displayed
+// Define the current text displayed and the carot display indicator
 const value = ref("");
+const carot = ref(true);
+const carotOn = ref(true);
 
 // Get the final values of the component.
 const words = props.words;
 const loop = props.loop ?? true;
 const wait = props.wait ?? 1500;
+const immediate = props.immediate ?? false;
 let currentWord = 0;
 let currentChar = 0;
+
+// Blinking carot.
+const carotInt = setInterval(() => {
+  carot.value = !carot.value;
+}, 500);
 
 // Recursive function to create and destroy intervals, imitating typing.
 function createWordInterval() {
@@ -43,9 +55,13 @@ function createWordInterval() {
       currentChar = 0;
       currentWord++;
 
-      // Check if that was the last word. If no looping, we are done, else reset word index.
+      // Check if that was the last word. If no looping, disable the carrot permanantly and we are done, else reset word index.
       if (currentWord == words.length) {
-        if (!loop) return; // Breaks the loop, no intervals should remain at this time.
+        if (!loop) {
+          clearInterval(carotInt);
+          carotOn.value = false;
+          return;
+        } // Breaks the loop, no intervals should remain at this time.
 
         currentWord = 0;
       }
@@ -69,19 +85,13 @@ function createWordInterval() {
 }
 
 // Start inital typing.
-setTimeout(createWordInterval, wait);
-
-// Blinking carot.
-const carot = ref(true);
-setInterval(() => {
-  carot.value = !carot.value;
-}, 500);
+setTimeout(createWordInterval, immediate ? 0 : wait);
 </script>
 
 <template>
   <div class="flex flex-row justify-start w-full">
     <span>{{ value }}</span>
-    <!-- Set opacity of carot symbol based on carot value. -->
-    <span :class="carot ? 'opacity-100' : 'opacity-0'">|</span>
+    <!-- Set opacity of carot symbol based on carot value. Disable element if it is no longer needed. -->
+    <span v-if="carotOn" :class="carot ? 'opacity-100' : 'opacity-0'">|</span>
   </div>
 </template>
