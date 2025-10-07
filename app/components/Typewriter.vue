@@ -92,7 +92,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-row justify-start">
+  <div class="flex flex-row justify-start items-end">
     <span>{{ value }}</span>
     <!-- Set opacity of carot symbol based on carot value. Disable element if it is no longer needed. -->
     <span v-if="carotOn" :class="carot ? 'opacity-100' : 'opacity-0'">|</span>
