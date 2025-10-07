@@ -34,7 +34,17 @@ a.link {
     background-image 300ms, color 150ms;
 }
 a.link:hover {
-  /** Fill full width, looks like growing underline :P */
+  /* Fill full width, looks like growing underline :P */
   background-position: 100% 100%;
+  background-size: 100% 0.1em;
+}
+
+/* Fix weird underlines for non-accent font text */
+a.link.link-sm {
+  background-position: 0 85%;
+  background-size: 0% 0.1em;
+}
+a.link.link-sm:hover {
+  background-position: 100% 85%;
   background-size: 100% 0.1em;
 }
