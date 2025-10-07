@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
   app: {
+    baseURL: "/",
     head: {
       title: "Gavin's Portfolio",
       htmlAttrs: {
