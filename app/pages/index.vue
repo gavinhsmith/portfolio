@@ -16,19 +16,18 @@
             'HTML / CSS / JS',
             'React / Vue',
             'Next / Nuxt',
-            'Java',
-            'Kotlin',
+            'Java / Kotlin',
             'Swift',
-            'C#',
-            '.NET',
+            'C# / .NET',
             'C / C++',
             'Rust',
             'mobile',
             'desktop',
+            'IoT',
             'frontend',
             'backend',
             'full-stack',
-            'everything',
+            'anything & everything',
           ]"
           :wait="200"
           :loop="false"
