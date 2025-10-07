@@ -17,7 +17,7 @@
             'React / Vue',
             'Next / Nuxt',
             'Java',
-            'Koltin',
+            'Kotlin',
             'Swift',
             'C#',
             '.NET',
