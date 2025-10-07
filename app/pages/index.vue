@@ -4,7 +4,7 @@
     <NavHeadBumper />
 
     <!-- Main body... -->
-    <div class="text-5xl lg:text-7xl flex flex-col">
+    <div class="text-3xl lg:text-7xl flex flex-col">
       <h1>
         Howdy! I'm
         <strong>Gavin</strong>.
@@ -39,7 +39,7 @@
       <h1>developer.</h1>
     </div>
     <div class="my-10">
-      <p class="text-3xl">
+      <p class="text-lg lg:text-3xl">
         I am currently an undergraduate student at the
         <a
           href="https://wisc.edu"
@@ -54,7 +54,7 @@
     </div>
     <div>
       <div
-        class="w-full flex flex-col lg:flex-row justify-start items-center gap-10 text-4xl font-accent"
+        class="w-full flex flex-col lg:flex-row justify-start items-center gap-10 text-2xl lg:text-4xl font-accent"
       >
         <a href="https://github.com/gavinhsmith" class="w-full lg:w-fit button">
           <Icon name="tabler:brand-github" />
