@@ -9,6 +9,7 @@
     <div
       class="flex flex-row justify-end gap-2 md:gap-8 items-center w-full h-full"
     >
+      <!-- Disable about on small screens as the logo can navigate home. -->
       <NavHeadLink href="/" class="hidden md:block">About</NavHeadLink>
       <NavHeadLink href="/projects">Projects</NavHeadLink>
       <NavHeadLink href="/blog">Blog</NavHeadLink>

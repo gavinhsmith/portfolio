@@ -1,4 +1,5 @@
 <template>
+  <!-- Disable the route if we are on the same page. -->
   <a
     class="flex flex-row justify-start items-center h-full gap-6 hover:[&>img]:translate-y-3 hover:[&>img]:drop-shadow-xl"
     :href="$route.path === '/' ? '#' : '/'"
