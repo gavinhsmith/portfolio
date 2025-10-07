@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full px-18 py-17">
+  <div class="w-full h-full p-10 lg:px-18 lg:py-17">
     <!-- Pushes down the content to not be behind the navbar. -->
     <NavHeadBumper />
 
