@@ -49,14 +49,6 @@ a.link.link-sm:hover {
   background-size: 100% 0.1em;
 }
 
-/* Standard button */
-a.button {
-  @apply flex flex-row justify-center lg:justify-start items-center gap-5 py-3 px-5 transition-colors bg-light text-dark hover:bg-accent-light hover:text-light dark:bg-dark dark:text-light shadow-sm;
-}
-a.button:hover {
-  @apply shadow-2xl;
-}
-
 /* Strong text */
 strong {
   @apply font-extrabold transition-colors text-accent-light;
