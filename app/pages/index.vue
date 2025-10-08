@@ -8,7 +8,7 @@
         <h1>Howdy! I'm <strong>Gavin</strong>.</h1>
         <span>Your next</span>
         <span class="font-accent">
-          <Typewriter
+          <EffectTypewriter
             :words="[
               'HTML / CSS / JS',
               'React / Vue',
