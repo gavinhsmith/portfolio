@@ -3,7 +3,7 @@
     <div class="flex-none">
       <NavHeadBar />
     </div>
-    <div class="flex-1 h-full font-main text-xl">
+    <div class="flex-1 font-main text-xl">
       <slot />
     </div>
     <div class="flex-none">
