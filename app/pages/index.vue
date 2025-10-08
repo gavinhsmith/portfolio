@@ -3,8 +3,8 @@
     <!-- Pushes down the content to not be behind the navbar. -->
     <NavHeadBumper />
 
-    <BlockLayoutCentered>
-      <BlockTextExtraBig>
+    <LayoutCentered>
+      <TextExtraBig>
         <h1>Howdy! I'm <strong>Gavin</strong>.</h1>
         <span>Your next</span>
         <span class="font-accent">
@@ -35,8 +35,8 @@
           />
         </span>
         <span>developer!</span>
-      </BlockTextExtraBig>
-      <BlockTextParagraph>
+      </TextExtraBig>
+      <TextParagraph>
         <p>
           I am currently an undergraduate student at the
           <a
@@ -49,7 +49,7 @@
           <strong>under construction</strong> due to my classwork occupying most
           of my time. Keep in touch with me below:
         </p>
-      </BlockTextParagraph>
+      </TextParagraph>
       <div class="flex flex-col lg:flex-row gap-3 w-full lg:w-1/2">
         <ButtonExternalLink
           href="https://github.com/gavinhsmith"
@@ -61,6 +61,6 @@
           Email
         </ButtonExternalLink>
       </div>
-    </BlockLayoutCentered>
+    </LayoutCentered>
   </div>
 </template>
