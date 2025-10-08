@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-row justify-between items-center h-12 w-full gap-4 px-4 lg:px-8 text-xs lg:text-lg font-accent bg-light text-dark dark:bg-dark dark:text-light"
+    class="flex flex-row justify-between items-center h-12 w-full gap-4 px-4 lg:px-8 text-xs lg:text-lg font-accent text-dark dark:text-light"
   >
     <div class="lg:w-1/3 flex flex-row justify-start items-center">
       <div class="flex flex-row justify-start items-center">
@@ -20,7 +20,11 @@
       >
     </div>
     <div class="lg:w-1/3 flex flex-row justify-end items-center text-right">
-      <Typewriter :words="['#work-in-progress']" :loop="false" :wait="750" />
+      <EffectTypewriter
+        :words="['#work-in-progress']"
+        :loop="false"
+        :wait="750"
+      />
     </div>
   </div>
 </template>

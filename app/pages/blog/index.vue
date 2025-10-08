@@ -1,8 +1,9 @@
 <template>
-  <NavHeadBumper />
-  <div class="w-full h-full p-10 lg:px-18 lg:py-17">
-    <div class="text-3xl lg:text-7xl">
-      <h1>Under Construction!</h1>
-    </div>
+  <div class="w-full h-full">
+    <LayoutCentered>
+      <TextExtraBig>
+        <h1>Under Construction!</h1>
+      </TextExtraBig>
+    </LayoutCentered>
   </div>
 </template>
