@@ -30,8 +30,11 @@ a.link {
   background-repeat: no-repeat;
 
   /* Set transitions for gradient. Also do color as this approch breaks transition-colors w tailwind... */
-  transition: background-size 300ms, background-position 0ms 300ms,
-    background-image 300ms, color 150ms;
+  transition:
+    background-size 300ms,
+    background-position 0ms 300ms,
+    background-image 300ms,
+    color 150ms;
 }
 a.link:hover {
   /* Fill full width, looks like growing underline :P */
