@@ -5,10 +5,12 @@
       </FilterDisplacement>
     </div>
     <div class="w-full h-screen flex flex-col items-center justify-center">
-      <div class="w-88">
+      <div class="w-88 lg:w-lg lg:mr-72">
         <ComputerAppContainer title="Welcome" icon="tabler:alert-hexagon">
           <div class="pl-10 pr-20 py-6 bg-pine-blue text-porcelain">
-            <h1 class="mb-2 text-4xl text-light-cyan font-serif italic">
+            <h1
+              class="mb-3 lg:mb-8 text-4xl lg:text-5xl text-light-cyan font-serif italic"
+            >
               Howdy!
             </h1>
             <p class="text-lg">
