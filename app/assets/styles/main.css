@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --font-header: "Amiri";
-  --font-accent: "PT Sans";
-  --font-body: "Noto Sans";
+  --font-serif: "Amiri";
+  --font-sans: "PT Sans";
+  --font-normal: "Noto Sans";
 
   --color-pine-blue-50: rgb(240 244 245);
   --color-pine-blue-100: rgb(225 233 234);
