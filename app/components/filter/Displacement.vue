@@ -1,16 +1,20 @@
+<script setup>
+defineProps(["baseFreq", "dispScale"]);
+</script>
+
 <template>
   <svg class="w-0 h-0 absolute">
     <filter id="distort-filter">
       <feTurbulence
         type="turbulence"
-        baseFrequency="0.01"
+        :baseFrequency="baseFreq"
         numOctaves="3"
         result="turbulence"
       />
       <feDisplacementMap
         in="SourceGraphic"
         in2="turbulence"
-        scale="35"
+        :scale="dispScale"
         xChannelSelector="R"
         yChannelSelector="G"
       />

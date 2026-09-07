@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="w-full h-screen absolute bg-ink-black overflow-hidden">
-      <FilterDisplacement> </FilterDisplacement>
+      <FilterDisplacement :baseFreq="0.01" :dispScale="35">
+      </FilterDisplacement>
     </div>
     <div class="w-full h-screen flex flex-col items-center justify-center">
       <div class="w-88">
