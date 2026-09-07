@@ -3,7 +3,9 @@ defineProps(["title", "icon"]);
 </script>
 
 <template>
-  <div class="w-full h-full rounded-md flex flex-col overflow-hidden">
+  <div
+    class="w-full h-full rounded-md flex flex-col drop-shadow-lg overflow-hidden"
+  >
     <div
       class="w-full h-fit p-1 bg-porcelain text-ink-black font-sans flex flex-row justify-between"
     >
