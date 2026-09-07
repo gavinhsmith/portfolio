@@ -1,58 +1,67 @@
 @import "tailwindcss";
 
 @theme {
-  --font-accent: "Bitcount", "JetBrains Mono", "Inconsolata", monospace;
-  --font-main: "Zain", "Outfit", "Noto Sans", Arial;
+  --font-header: "Amiri";
+  --font-accent: "PT Sans";
+  --font-body: "Noto Sans";
 
-  --color-white: rgba(250, 250, 250, 1);
-  --color-black: rgba(15, 15, 15, 1);
-  --color-light: rgba(239, 240, 244, 1);
-  --color-dark: rgba(31, 26, 40, 1);
-  --color-accent-dark: rgba(204, 41, 54, 1);
-  --color-accent-light: rgba(238, 98, 88, 1);
-  --color-secondary: rgba(230, 199, 156, 1);
-}
+  --color-pine-blue-50: rgb(240 244 245);
+  --color-pine-blue-100: rgb(225 233 234);
+  --color-pine-blue-200: rgb(195 211 213);
+  --color-pine-blue-300: rgb(165 190 192);
+  --color-pine-blue-400: rgb(135 168 171);
+  --color-pine-blue-500: rgb(105 146 150);
+  --color-pine-blue-600: rgb(84 117 120);
+  --color-pine-blue-700: rgb(63 88 90);
+  --color-pine-blue-800: rgb(42 58 60);
+  --color-pine-blue-900: rgb(21 29 30);
+  --color-pine-blue-950: rgb(15 20 21);
 
-/* Set default bg color */
-body {
-  @apply bg-white text-black dark:bg-black dark:text-white;
-}
+  --color-light-cyan-50: rgb(232 252 253);
+  --color-light-cyan-100: rgb(209 249 250);
+  --color-light-cyan-200: rgb(162 243 246);
+  --color-light-cyan-300: rgb(116 237 241);
+  --color-light-cyan-400: rgb(69 231 237);
+  --color-light-cyan-500: rgb(23 225 232);
+  --color-light-cyan-600: rgb(18 180 186);
+  --color-light-cyan-700: rgb(14 135 139);
+  --color-light-cyan-800: rgb(9 90 93);
+  --color-light-cyan-900: rgb(5 45 46);
+  --color-light-cyan-950: rgb(3 32 32);
 
-/* Left-to-right underline on links. */
-a.link {
-  /* Disable regular underline. */
-  text-decoration: none;
+  --color-burnt-peach-50: rgb(251 237 234);
+  --color-burnt-peach-100: rgb(247 220 212);
+  --color-burnt-peach-200: rgb(239 184 169);
+  --color-burnt-peach-300: rgb(231 149 126);
+  --color-burnt-peach-400: rgb(222 114 84);
+  --color-burnt-peach-500: rgb(214 78 41);
+  --color-burnt-peach-600: rgb(171 63 33);
+  --color-burnt-peach-700: rgb(129 47 24);
+  --color-burnt-peach-800: rgb(86 31 16);
+  --color-burnt-peach-900: rgb(43 16 8);
+  --color-burnt-peach-950: rgb(30 11 6);
 
-  /* Create gradient to emulate the underline, hidden by default */
-  background-image: linear-gradient(currentColor 0 0);
-  background-position: 0 100%;
-  background-size: 0% 0.1em;
-  background-repeat: no-repeat;
+  --color-ink-black-50: rgb(230 243 254);
+  --color-ink-black-100: rgb(205 232 254);
+  --color-ink-black-200: rgb(156 209 252);
+  --color-ink-black-300: rgb(106 186 251);
+  --color-ink-black-400: rgb(56 163 250);
+  --color-ink-black-500: rgb(6 140 249);
+  --color-ink-black-600: rgb(5 112 199);
+  --color-ink-black-700: rgb(4 84 149);
+  --color-ink-black-800: rgb(3 56 99);
+  --color-ink-black-900: rgb(1 28 50);
+  --color-ink-black-950: rgb(1 20 35);
 
-  /* Set transitions for gradient. Also do color as this approch breaks transition-colors w tailwind... */
-  transition:
-    background-size 300ms,
-    background-position 0ms 300ms,
-    background-image 300ms,
-    color 150ms;
-}
-a.link:hover {
-  /* Fill full width, looks like growing underline :P */
-  background-position: 100% 100%;
-  background-size: 100% 0.1em;
-}
-
-/* Fix weird underlines for non-accent font text */
-a.link.link-sm {
-  background-position: 0 85%;
-  background-size: 0% 0.1em;
-}
-a.link.link-sm:hover {
-  background-position: 100% 85%;
-  background-size: 100% 0.1em;
-}
-
-/* Strong text */
-strong {
-  @apply font-extrabold transition-colors text-accent-light;
+  --color-porcelain-50: rgb(240 251 233);
+  --color-porcelain-100: rgb(226 248 211);
+  --color-porcelain-200: rgb(197 240 168);
+  --color-porcelain-300: rgb(168 233 124);
+  --color-porcelain-400: rgb(139 225 81);
+  --color-porcelain-500: rgb(109 218 37);
+  --color-porcelain-600: rgb(88 174 30);
+  --color-porcelain-700: rgb(66 131 22);
+  --color-porcelain-800: rgb(44 87 15);
+  --color-porcelain-900: rgb(22 44 7);
+  --color-porcelain-950: rgb(15 31 5);
 }
