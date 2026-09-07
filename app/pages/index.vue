@@ -1,5 +1,3 @@
 <template>
-  <LayoutCentered>
-    <h1>Test</h1>
-  </LayoutCentered>
+  <h1 class="font-serif text-3xl m-2">Portfolio Test</h1>
 </template>
