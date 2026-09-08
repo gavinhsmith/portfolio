@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="w-full h-screen absolute overflow-hidden">
+    <div class="w-full h-full absolute overflow-hidden">
       <FilterDisplacement :baseFreq="0.01" :dispScale="35">
         <div
           class="w-full h-full bg-deep-twilight bg-[url(/img/pattern.svg)] bg-center scale-120"
@@ -9,7 +9,7 @@
     </div>
 
     <div
-      class="w-full h-screen flex flex-col gap-2 items-center justify-center overflow-hidden"
+      class="w-full h-dvh flex flex-col gap-2 items-center justify-center overflow-hidden"
     >
       <div class="mr-4">
         <div class="w-64">
