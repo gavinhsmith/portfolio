@@ -7,14 +7,14 @@ defineProps(["baseFreq", "dispScale"]);
     <filter id="distort-filter">
       <feTurbulence
         type="turbulence"
-        :baseFrequency="baseFreq"
+        :baseFrequency="0.01"
         numOctaves="3"
         result="turbulence"
       />
       <feDisplacementMap
         in="SourceGraphic"
         in2="turbulence"
-        :scale="dispScale"
+        :scale="35"
         xChannelSelector="R"
         yChannelSelector="G"
       />

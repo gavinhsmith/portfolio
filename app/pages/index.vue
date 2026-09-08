@@ -1,12 +1,13 @@
 <template>
   <div>
-    <div
-      class="w-full h-screen absolute bg-deep-twilight bg-[url(/img/pattern.svg)] overflow-hidden"
-    >
+    <div class="w-full h-screen absolute bg-deep-twilight overflow-hidden">
       <FilterDisplacement :baseFreq="0.01" :dispScale="35">
+        <div class="w-full h-full bg-[url(/img/pattern.svg)] scale-110"></div>
       </FilterDisplacement>
     </div>
-    <div class="w-full h-screen flex flex-col items-center justify-center">
+    <div
+      class="w-full h-screen flex flex-col items-center justify-center overflow-hidden"
+    >
       <div class="w-80 h-64 lg:h-80 absolute mt-136 lg:mt-96 ml-32 lg:ml-164">
         <ComputerAppContainer title="Playing Now" icon="tabler:file-music">
           <div
