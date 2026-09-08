@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   app: {
     baseURL: "/",
     head: {
-      title: "Gavin Smith - Portfolio",
+      title: "Gavin Smith",
       htmlAttrs: {
         lang: "en",
       },

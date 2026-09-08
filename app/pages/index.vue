@@ -1,61 +1,65 @@
 <template>
-  <LayoutCentered>
-    <TextExtraBig>
-      <h1>Howdy! I'm <strong>Gavin</strong>.</h1>
-      <span>Your next</span>
-      <span class="font-accent">
-        <EffectTypewriter
-          :words="[
-            'HTML / CSS / JS',
-            'React / Vue',
-            'Next / Nuxt',
-            'Python',
-            'Golang',
-            'Java / Kotlin',
-            'Swift',
-            'C# / .NET',
-            'C / C++',
-            'Rust',
-            'mobile',
-            'desktop',
-            'IoT',
-            'frontend',
-            'backend',
-            'full-stack',
-            'anything & everything',
-          ]"
-          :wait="300"
-          :loop="false"
-          :immediate="true"
-          :colorize-last="true"
-        />
-      </span>
-      <span>developer!</span>
-    </TextExtraBig>
-    <TextParagraph>
-      <p>
-        I am currently an undergraduate student at the
-        <a
-          href="https://wisc.edu"
-          target="_blank"
-          class="link link-sm text-accent-light italic"
-          >University of Wisconsin-Madison</a
-        >. Here you can find my professional/personal projects and affiliations.
-        Currently, this corner of the internet is
-        <strong>under construction</strong> due to my classwork occupying most
-        of my time. Keep in touch with me below:
-      </p>
-    </TextParagraph>
-    <div class="flex flex-col lg:flex-row gap-3 w-full lg:w-1/2">
-      <ButtonExternalLink
-        href="https://github.com/gavinhsmith"
-        icon="tabler:brand-github"
-      >
-        GitHub
-      </ButtonExternalLink>
-      <ButtonExternalLink href="mailto:me@gavinhsmith.com" icon="tabler:mail">
-        Email
-      </ButtonExternalLink>
+  <div>
+    <div
+      class="w-full h-screen absolute bg-deep-twilight bg-[url(/img/pattern.svg)] overflow-hidden"
+    >
+      <FilterDisplacement :baseFreq="0.01" :dispScale="35">
+      </FilterDisplacement>
     </div>
-  </LayoutCentered>
+    <div class="w-full h-screen flex flex-col items-center justify-center">
+      <div class="w-80 h-64 lg:h-80 absolute mt-136 lg:mt-96 ml-32 lg:ml-164">
+        <ComputerAppContainer title="Playing Now" icon="tabler:file-music">
+          <div
+            class="w-full h-full flex flex-col items-center justify-center bg-ink-black text-porcelain text-3xl font-mono"
+          >
+            W.I.P. :P
+          </div>
+        </ComputerAppContainer>
+      </div>
+
+      <div class="w-80 lg:w-lg h-64 absolute mb-136 lg:mb-96 mr-32 lg:ml-98">
+        <ComputerAppContainer title="Socials" icon="tabler:social">
+          <div
+            class="w-full h-full flex flex-col items-center justify-center bg-ink-black text-porcelain text-3xl font-mono"
+          >
+            W.I.P. :P
+          </div>
+        </ComputerAppContainer>
+      </div>
+
+      <div class="w-88 lg:w-xl lg:mr-88 absolute">
+        <ComputerAppContainer title="Welcome" icon="tabler:home-2">
+          <div class="pl-10 pr-20 py-6 bg-honeydew text-ink-black">
+            <h1
+              class="text-4xl lg:text-5xl text-prussian-blue font-serif font-bold italic"
+            >
+              Howdy!
+            </h1>
+            <div class="w-12 h-0.75 mb-6 mt-2 lg:mb-12 flex flex-row">
+              <div class="bg-golden-glow w-full h-full" />
+              <div class="bg-harvest-orange w-full h-full" />
+              <div class="bg-oxblood w-full h-full" />
+            </div>
+            <p class="lg:text-lg">
+              My name is
+              <strong class="text-prussian-blue">Gavin Smith</strong>, and I am
+              a Computer Science student at the University of Wisconsin-Madison.
+            </p>
+            <p></p>
+          </div>
+        </ComputerAppContainer>
+      </div>
+      <div class="absolute left-3 bottom-2 text-porcelain font-mono">
+        <p>
+          W.I.P. | Made with <span class="hover:text-oxblood">&lt;3</span> by
+          <a
+            class="underline hover:text-honeydew"
+            href="https://github.com/gavinhsmith/"
+            target="_blank"
+            >me</a
+          >. | (c) 2026
+        </p>
+      </div>
+    </div>
+  </div>
 </template>
