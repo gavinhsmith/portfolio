@@ -30,7 +30,9 @@
       <div class="w-88 lg:w-xl lg:mr-88 absolute">
         <ComputerAppContainer title="Welcome" icon="tabler:home-2">
           <div class="pl-10 pr-20 py-6 bg-honeydew text-ink-black">
-            <h1 class="text-4xl lg:text-5xl font-serif font-bold italic">
+            <h1
+              class="text-4xl lg:text-5xl text-prussian-blue font-serif font-bold italic"
+            >
               Howdy!
             </h1>
             <div class="w-12 h-0.75 mb-6 mt-2 lg:mb-12 flex flex-row">
@@ -39,9 +41,11 @@
               <div class="bg-oxblood w-full h-full" />
             </div>
             <p class="lg:text-lg">
-              My name is Gavin Smith, and I am a Computer Science student at the
-              University of Wisconsin-Madison.
+              My name is
+              <strong class="text-prussian-blue">Gavin Smith</strong>, and I am
+              a Computer Science student at the University of Wisconsin-Madison.
             </p>
+            <p></p>
           </div>
         </ComputerAppContainer>
       </div>
