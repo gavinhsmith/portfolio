@@ -49,6 +49,17 @@
           </div>
         </ComputerAppContainer>
       </div>
+      <div class="absolute left-3 bottom-2 text-porcelain font-mono">
+        <p>
+          W.I.P. | Made with <span class="hover:text-oxblood">&lt;3</span> by
+          <a
+            class="underline hover:text-honeydew"
+            href="https://github.com/gavinhsmith/"
+            target="_blank"
+            >me</a
+          >. | (c) 2026
+        </p>
+      </div>
     </div>
   </div>
 </template>
