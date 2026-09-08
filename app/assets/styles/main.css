@@ -1,15 +1,18 @@
 @import "tailwindcss";
 
-/* Colors: https://coolors.co/587b7f-e0fbfc-e07a5f-011627-fbfef9 */
 @theme {
   --font-serif: "Amiri";
   --font-sans: "Noto Sans";
   --font-mono: "IBM Plex Mono";
   --font-sub: "PT Sans";
 
-  --color-pine-blue: #587b7fff;
-  --color-light-cyan: #e0fbfcff;
-  --color-burnt-peach: #e07a5fff;
-  --color-ink-black: #011627ff;
+  --color-golden-glow: #e0ca3cff;
+  --color-harvest-orange: #e97720ff;
+  --color-oxblood: #a10702ff;
+  --color-alabaster-grey: #d3d4d9ff;
+  --color-deep-twilight: #190e4fff;
+  --color-prussian-blue: #03012cff;
+  --color-ink-black: #01000fff;
+  --color-honeydew: #e2fcefff;
   --color-porcelain: #fbfef9ff;
 }

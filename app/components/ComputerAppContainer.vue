@@ -14,9 +14,9 @@ defineProps(["title", "icon"]);
         <span class="mb-0.5 text-sm">{{ title }}</span>
       </div>
       <div class="mr-0.5 flex flex-row items-center gap-1">
-        <span class="bg-green-500 w-2 h-2 rounded" />
-        <span class="bg-yellow-500 w-2 h-2 rounded" />
-        <span class="bg-red-500 w-2 h-2 rounded" />
+        <span class="bg-golden-glow w-2 h-2 rounded" />
+        <span class="bg-harvest-orange w-2 h-2 rounded" />
+        <span class="bg-oxblood w-2 h-2 rounded" />
       </div>
     </div>
     <div class="w-full h-full">
