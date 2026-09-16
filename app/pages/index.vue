@@ -9,30 +9,70 @@
     </div>
 
     <div
-      class="w-full h-dvh flex flex-col gap-2 items-center justify-center overflow-hidden"
+      class="w-full h-dvh flex flex-col gap-2 items-center justify-center overflow-hidden px-4"
     >
-      <div class="mr-4">
-        <div class="w-64">
-          <ComputerAppContainer title="Now Playing" icon="tabler:file-music">
+      <div class="md:mr-4">
+        <div class="w-full max-w-72">
+          <ComputerAppContainer title="Welcome" icon="tabler:home-2">
+            <div class="px-5 py-3 bg-honeydew text-ink-black">
+              <h1
+                class="text-xl md:text-2xl text-prussian-blue font-serif font-bold italic"
+              >
+                Howdy!
+              </h1>
+              <div class="w-10 h-0.5 mb-3 -mt-1 flex flex-row">
+                <div class="bg-golden-glow w-full h-full" />
+                <div class="bg-harvest-orange w-full h-full" />
+                <div class="bg-oxblood w-full h-full" />
+              </div>
+              <p class="text-xs md:text-sm">
+                My name is
+                <strong class="text-prussian-blue">Gavin Smith</strong>
+                (he/him), a Computer Science student at the University of
+                Wisconsin-Madison
+                <span class="italic">(Class of 2028)</span>, pursuing a
+                certificate in Physics.
+              </p>
+              <p class="text-xs md:text-sm mt-1 flex items-center gap-1">
+                <Icon name="tabler:map-pin" />
+                Madison, WI
+              </p>
+            </div>
+          </ComputerAppContainer>
+        </div>
+      </div>
+
+      <div class="md:ml-4">
+        <div class="w-full max-w-72">
+          <ComputerAppContainer title="Currently" icon="tabler:bulb">
             <div
-              class="p-4 gap-4 w-full h-full flex flex-row items-center justify-between bg-ink-black text-porcelain font-mono"
+              class="w-full h-full flex flex-col justify-center p-4 gap-2.5 bg-ink-black text-porcelain text-md font-mono"
             >
-              <img
-                class="h-20 rounded-xs"
-                src="https://i.scdn.co/image/ab67616d0000b2735d4f134be168c323db1faf80"
-                alt="Now Playing Album Art"
-              />
-              <div class="w-full h-full flex flex-col gap-4 justify-between">
-                <div class="w-full h-full flex flex-col">
-                  <h2 class="text-xs">Close your Eyes</h2>
-                  <h3 class="text-xs italic">The Midnight Club</h3>
+              <div class="flex flex-row items-center gap-3">
+                <Icon name="tabler:cash" class="shrink-0" />
+                <div class="flex flex-col leading-tight">
+                  <span class="text-xs md:text-sm">VP of Finance</span>
+                  <span class="text-[10px] md:text-xs italic opacity-70"
+                    >Software Development Club</span
+                  >
                 </div>
-                <div
-                  class="w-full h-full flex flex-row items-center justify-center gap-4 text-2xl"
-                >
-                  <Icon name="tabler:player-track-prev-filled" />
-                  <Icon name="tabler:player-pause-filled" />
-                  <Icon name="tabler:player-track-next-filled" />
+              </div>
+              <div class="flex flex-row items-center gap-3">
+                <Icon name="tabler:code" class="shrink-0" />
+                <div class="flex flex-col leading-tight">
+                  <span class="text-xs md:text-sm">Developer</span>
+                  <span class="text-[10px] md:text-xs italic opacity-70"
+                    >WebLabs, UW-Madison</span
+                  >
+                </div>
+              </div>
+              <div class="flex flex-row items-center gap-3">
+                <Icon name="tabler:rocket" class="shrink-0" />
+                <div class="flex flex-col leading-tight">
+                  <span class="text-xs md:text-sm">Building</span>
+                  <span class="text-[10px] md:text-xs italic opacity-70"
+                    >Open Game Host & Pulse</span
+                  >
                 </div>
               </div>
             </div>
@@ -40,32 +80,11 @@
         </div>
       </div>
 
-      <div class="w-72">
-        <ComputerAppContainer title="Welcome" icon="tabler:home-2">
-          <div class="px-5 py-3 bg-honeydew text-ink-black">
-            <h1 class="text-2xl text-prussian-blue font-serif font-bold italic">
-              Howdy!
-            </h1>
-            <div class="w-10 h-0.5 mb-3 -mt-1 flex flex-row">
-              <div class="bg-golden-glow w-full h-full" />
-              <div class="bg-harvest-orange w-full h-full" />
-              <div class="bg-oxblood w-full h-full" />
-            </div>
-            <p class="text-sm">
-              My name is
-              <strong class="text-prussian-blue">Gavin Smith</strong>, and I am
-              a Computer Science student at the University of Wisconsin-Madison.
-            </p>
-            <p></p>
-          </div>
-        </ComputerAppContainer>
-      </div>
-
-      <div class="ml-4">
-        <div class="w-64">
+      <div class="md:mr-4">
+        <div class="w-full max-w-72">
           <ComputerAppContainer title="Socials" icon="tabler:social">
             <div
-              class="w-full h-full flex flex-col justify-center p-4 gap-2 bg-ink-black text-porcelain text-md font-mono"
+              class="w-full h-full flex flex-col justify-center p-4 gap-2 bg-ink-black text-porcelain text-xs md:text-md font-mono"
             >
               <a
                 class="flex flex-row items-center gap-3 hover:underline"
