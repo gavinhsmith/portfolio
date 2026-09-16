@@ -11,7 +11,7 @@
     <div
       class="w-full h-dvh flex flex-col md:flex-row gap-2 md:gap-4 items-center justify-center overflow-hidden px-4"
     >
-      <div class="w-full max-w-72">
+      <div class="w-full max-w-72 -translate-x-3 md:translate-x-0 md:-translate-y-4">
         <ComputerAppContainer title="Welcome" icon="tabler:home-2">
           <div class="px-5 py-3 bg-honeydew text-ink-black">
             <h1
@@ -40,7 +40,7 @@
         </ComputerAppContainer>
       </div>
 
-      <div class="w-full max-w-72 flex flex-col gap-2">
+      <div class="w-full max-w-72 flex flex-col gap-2 md:translate-y-4">
         <ComputerAppContainer title="Currently" icon="tabler:bulb">
           <div
             class="w-full h-full flex flex-col justify-center p-4 gap-2.5 bg-ink-black text-porcelain text-md font-mono"
@@ -75,7 +75,7 @@
           </div>
         </ComputerAppContainer>
 
-        <ComputerAppContainer title="Socials" icon="tabler:social">
+        <ComputerAppContainer title="Socials" icon="tabler:social" class="translate-x-3">
           <div
             class="w-full h-full flex flex-col justify-center p-4 gap-2 bg-ink-black text-porcelain text-xs md:text-md font-mono"
           >
