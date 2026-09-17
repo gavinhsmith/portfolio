@@ -16,3 +16,12 @@
   --color-honeydew: #e2fcefff;
   --color-porcelain: #fbfef9ff;
 }
+
+@keyframes bg-pattern-drift {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 100%;
+  }
+}

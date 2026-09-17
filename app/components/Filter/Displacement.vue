@@ -10,7 +10,14 @@ defineProps(["baseFreq", "dispScale"]);
         :baseFrequency="baseFreq"
         numOctaves="3"
         result="turbulence"
-      />
+      >
+        <animate
+          attributeName="baseFrequency"
+          :values="`${baseFreq};${baseFreq * 1.6};${baseFreq}`"
+          dur="20s"
+          repeatCount="indefinite"
+        />
+      </feTurbulence>
       <feDisplacementMap
         in="SourceGraphic"
         in2="turbulence"
