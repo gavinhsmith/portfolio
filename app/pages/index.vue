@@ -48,7 +48,7 @@
             class="w-full h-full flex flex-col justify-center px-4 py-2 md:px-4 gap-1 md:gap-2.5 bg-ink-black text-porcelain text-md font-mono"
           >
             <div class="flex flex-row items-center gap-3">
-              <Icon name="tabler:cash" class="shrink-0" />
+              <Icon name="tabler:manual-gearbox" class="shrink-0" />
               <div class="flex flex-col leading-tight">
                 <span class="text-xs md:text-sm">Project Manager</span>
                 <span class="text-[10px] md:text-xs italic opacity-70"
