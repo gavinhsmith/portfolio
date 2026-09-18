@@ -1,5 +1,5 @@
 {
-  "name": "Gavin Smith's Portfolio",
+  "name": "Gavin Smith",
   "short_name": "Gavin Smith",
   "icons": [
     {
@@ -13,7 +13,7 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#e07a5fff",
-  "background_color": "#fbfef9ff",
+  "theme_color": "#03012c",
+  "background_color": "#ffffff",
   "display": "standalone"
 }
