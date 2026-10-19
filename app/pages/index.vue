@@ -70,7 +70,7 @@
               <div class="flex flex-col leading-tight">
                 <span class="text-xs md:text-sm">Building</span>
                 <span class="text-[10px] md:text-xs italic opacity-70"
-                  >Open Game Host [OGH] | Tincan</span
+                  >Open Game Host [OGH] | Tinclib</span
                 >
               </div>
             </div>
