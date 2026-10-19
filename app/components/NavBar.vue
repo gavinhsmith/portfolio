@@ -1,8 +1,17 @@
 <script setup>
+const route = useRoute();
+
 const links = [
   { to: "/", label: "/index.md", exact: true },
   { to: "/projects", label: "/projects.md" },
 ];
+
+// /projects and /projects/[repo] are separate routes, so NuxtLink's
+// active-class can't see the nesting; match on the path instead.
+const isActive = (link) =>
+  link.exact
+    ? route.path === link.to
+    : route.path === link.to || route.path.startsWith(link.to + "/");
 </script>
 
 <template>
@@ -15,8 +24,7 @@ const links = [
       :key="link.to"
       :to="link.to"
       :data-label="link.label"
-      :active-class="link.exact ? '' : 'font-bold'"
-      :exact-active-class="'font-bold'"
+      :class="{ 'font-bold': isActive(link) }"
       class="inline-flex flex-col after:content-[attr(data-label)] after:font-bold after:h-0 after:overflow-hidden after:invisible after:select-none"
     >
       <!-- the hidden bold ::after copy reserves the bold width, so bolding never shifts the layout -->
