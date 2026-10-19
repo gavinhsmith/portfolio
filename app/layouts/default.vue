@@ -3,7 +3,7 @@
     <div class="w-full h-full absolute overflow-hidden -z-10">
       <FilterDisplacement :baseFreq="0.01" :dispScale="35">
         <div
-          class="w-full h-full bg-deep-twilight bg-[url(/img/pattern.svg)] bg-center scale-120 animate-[bg-pattern-drift_60s_linear_infinite]"
+          class="w-full h-full bg-deep-twilight bg-[url(/img/pattern.svg)] [background-size:calc(64px/var(--bg-scale,1))] bg-center scale-120 animate-[bg-pattern-drift_60s_linear_infinite]"
         ></div>
       </FilterDisplacement>
     </div>

@@ -23,8 +23,8 @@
     background-position: 0 0;
   }
   to {
-    /* must be a multiple of the 64px tile in pattern.svg, or the loop jumps */
-    background-position: 640px 640px;
+    /* must be a multiple of the tile size (64px, shrunk by --bg-scale on 3x screens), or the loop jumps */
+    background-position: calc(640px / var(--bg-scale, 1)) calc(640px / var(--bg-scale, 1));
   }
 }
 
