@@ -34,7 +34,12 @@ const updated = fmtDate(project.pushed_at);
 
       <!-- small screens: sidebar dissolves (contents) so its windows can be ordered
            around the README: name, release, README, git log -->
-      <div class="contents md:flex md:flex-col md:w-64 md:shrink-0 md:gap-4">
+      <!-- desktop: sticks just below the nav fade (sticky offsets start inside the page's 7rem top
+           padding; -top-3 cancels p-3); windows keep full height and the sidebar scrolls if taller
+           than the screen. p-3/-m-3 leaves room for the window shadows inside the scroll box. -->
+      <div
+        class="contents md:flex md:flex-col md:w-70 md:shrink-0 md:gap-4 md:sticky md:-top-3 md:max-h-[calc(100dvh-7.5rem)] md:overflow-y-auto md:p-3 md:-m-3 md:*:shrink-0"
+      >
         <ComputerAppContainer
           :title="project.name"
           icon="tabler:brand-github"
