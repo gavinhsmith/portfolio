@@ -28,7 +28,7 @@
   }
 }
 
-/* Fixes for GitHub-rendered markdown (READMEs, release notes), layered on `prose` */
+/* Fixes for GitHub-rendered READMEs, layered on `prose` */
 .markdown {
   /* GitHub's permalink icon next to every heading */
   .anchor {

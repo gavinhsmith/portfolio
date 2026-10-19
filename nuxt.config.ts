@@ -12,7 +12,9 @@ export default defineNuxtConfig({
   },
   // Cache project pages + their API for 10 min (CDN/ISR on Vercel, in-server elsewhere)
   routeRules: {
+    "/projects": { swr: 600 },
     "/projects/**": { swr: 600 },
+    "/api/github": { swr: 600 },
     "/api/github/**": { swr: 600 },
   },
   vite: {

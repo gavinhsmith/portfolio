@@ -10,7 +10,10 @@
 
     <NavBar />
 
-    <div class="w-full h-full">
+    <!-- content fades out under the nav bar (nav is ~3.75rem tall, md: ~5.25rem) so it stays readable -->
+    <div
+      class="w-full h-full [mask-image:linear-gradient(to_bottom,transparent_3.75rem,black_6rem)] md:[mask-image:linear-gradient(to_bottom,transparent_5.25rem,black_7rem)]"
+    >
       <slot />
     </div>
   </div>

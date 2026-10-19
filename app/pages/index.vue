@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="h-full">
     <div
-      class="w-full h-dvh flex flex-col md:flex-row gap-2 md:gap-4 items-center justify-center overflow-hidden px-4"
+      class="w-full h-full flex flex-col md:flex-row gap-2 md:gap-4 items-center-safe justify-center-safe overflow-x-hidden overflow-y-auto px-4 py-24 md:py-28"
     >
       <div
         class="w-full max-w-72 -translate-x-3 md:translate-x-0 md:-translate-y-4"

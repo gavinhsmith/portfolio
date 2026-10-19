@@ -11,23 +11,16 @@ if (error.value) {
 }
 const { project, readme, release, commits } = data.value;
 
-const fmtDate = (iso) =>
-  new Date(iso).toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-
 const updated = fmtDate(project.pushed_at);
 </script>
 
 <template>
-  <div class="w-full h-full overflow-y-auto px-4 pt-20 pb-8 md:pt-24">
+  <div class="w-full h-full overflow-y-auto px-4 pt-24 pb-8 md:pt-28">
     <div class="max-w-4xl mx-auto flex flex-col md:flex-row gap-4 items-start">
       <ComputerAppContainer
         title="README.md"
         icon="tabler:file-text"
-        class="md:flex-1 min-w-0"
+        class="md:flex-1 min-w-0 order-3 md:order-none"
       >
         <div
           v-if="readme"
@@ -39,8 +32,14 @@ const updated = fmtDate(project.pushed_at);
         </p>
       </ComputerAppContainer>
 
-      <div class="w-full md:w-64 shrink-0 flex flex-col gap-4">
-        <ComputerAppContainer :title="project.name" icon="tabler:brand-github">
+      <!-- small screens: sidebar dissolves (contents) so its windows can be ordered
+           around the README: name, release, README, git log -->
+      <div class="contents md:flex md:flex-col md:w-64 md:shrink-0 md:gap-4">
+        <ComputerAppContainer
+          :title="project.name"
+          icon="tabler:brand-github"
+          class="order-1"
+        >
           <div
             class="p-4 flex flex-col gap-2 bg-ink-black text-porcelain text-xs font-mono"
           >
@@ -82,6 +81,7 @@ const updated = fmtDate(project.pushed_at);
           v-if="release"
           title="Latest release"
           icon="tabler:tag"
+          class="order-2"
         >
           <div
             class="p-4 flex flex-col gap-2 bg-ink-black text-porcelain text-xs font-mono"
@@ -95,10 +95,6 @@ const updated = fmtDate(project.pushed_at);
               }}</span>
             </div>
             <span v-if="release.name" class="font-bold">{{ release.name }}</span>
-            <div
-              class="markdown prose prose-sm prose-invert max-w-none text-xs! opacity-80"
-              v-html="release.body_html"
-            />
             <a
               :href="release.html_url"
               target="_blank"
@@ -113,6 +109,7 @@ const updated = fmtDate(project.pushed_at);
           v-if="commits.length"
           title="git log"
           icon="tabler:git-branch"
+          class="order-4"
         >
           <ol class="px-4 py-3 bg-ink-black text-porcelain text-xs font-mono">
             <li

@@ -1,30 +1,14 @@
-const OWNER = "gavinhsmith";
 // GitHub repo names: letters, digits, ".", "_", "-", up to 100 chars.
 const VALID_REPO = /^[a-z0-9._-]{1,100}$/;
-
-// Treat "doesn't exist" (404: no readme / no releases, 409: empty repo) as null;
-// anything else (rate limit, GitHub down) is a real error.
-const orNull = <T>(p: Promise<T>) =>
-  p.catch((e) => {
-    if ([404, 409].includes(e?.response?.status)) return null;
-    throw e;
-  });
 
 // Cached for 10 min per repo, including "not found" (null), so neither page
 // views nor junk URLs hit GitHub repeatedly. Errors (e.g. rate limits) aren't
 // cached; with swr the last good copy keeps being served meanwhile.
 const getProject = defineCachedFunction(
   async (repo: string) => {
-    const { githubToken } = useRuntimeConfig();
-
-    const gh = $fetch.create({
-      baseURL: `https://api.github.com/repos/${OWNER}/${repo}`,
-      headers: {
-        "User-Agent": OWNER,
-        "X-GitHub-Api-Version": "2022-11-28",
-        ...(githubToken && { Authorization: `Bearer ${githubToken}` }),
-      },
-    });
+    const github = useGitHub();
+    const gh = <T>(path: string, opts?: any) =>
+      github<T>(`/repos/${GITHUB_OWNER}/${repo}${path}`, opts);
 
     const project = await orNull(gh<any>(""));
     if (!project || project.private) return null;
@@ -36,11 +20,7 @@ const getProject = defineCachedFunction(
           responseType: "text",
         }),
       ),
-      orNull(
-        gh<any>("/releases/latest", {
-          headers: { Accept: "application/vnd.github.html+json" },
-        }),
-      ),
+      orNull(gh<any>("/releases/latest")),
       orNull(
         gh<any[]>("/commits", {
           query: { sha: project.default_branch, per_page: 6 },
@@ -55,11 +35,22 @@ const getProject = defineCachedFunction(
       /(src|href)="(?![a-z][a-z0-9+.-]*:|\/\/|#)(?:\.\/|\/)?([^"]*)"/gi,
       (_, attr, path) =>
         attr === "src"
-          ? `src="https://raw.githubusercontent.com/${OWNER}/${project.name}/${branch}/${path}"`
+          ? `src="https://raw.githubusercontent.com/${GITHUB_OWNER}/${project.name}/${branch}/${path}"`
           : `href="${project.html_url}/blob/${branch}/${path}"`,
     );
 
-    return { project, readme: readmeHtml ?? null, release, commits: commits ?? [] };
+    return {
+      project,
+      readme: readmeHtml ?? null,
+      // notes are left on GitHub; the page only shows the summary
+      release: release && {
+        tag_name: release.tag_name,
+        name: release.name,
+        published_at: release.published_at,
+        html_url: release.html_url,
+      },
+      commits: commits ?? [],
+    };
   },
   {
     name: "github-project",
