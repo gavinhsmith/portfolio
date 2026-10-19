@@ -15,7 +15,8 @@ const props = defineProps({
 const finePointer = () =>
   matchMedia("(min-width: 48rem) and (pointer: fine)").matches;
 
-// --- Move: drag by the title bar; 3s after release the window drifts back home. ---
+// --- Move: drag by the title bar; 3s after release the window drifts back home.
+// Inside a bowl, the bowl times this for all its windows at once (see Bowl.vue). ---
 const offset = reactive({ x: 0, y: 0 });
 const z = ref(0);
 const returning = ref(false);
@@ -27,7 +28,9 @@ const canMove = () => props.movable && finePointer();
 
 function onDown(e) {
   if (!canMove() || e.button !== 0) return;
-  clearTimeout(returnTimer); // grabbed while waiting to return: stay put
+  // grabbed while waiting to return: stay put
+  if (bowl) bowl.holdReturn();
+  else clearTimeout(returnTimer);
   if (returning.value) {
     // caught mid-return: continue from where it visually is, not where it's headed
     const m = new DOMMatrix(getComputedStyle(root.value).transform);
@@ -45,10 +48,13 @@ function onMove(e) {
 function onUp() {
   if (!grab) return;
   grab = null;
-  returnTimer = setTimeout(() => {
-    returning.value = true;
-    Object.assign(offset, { x: 0, y: 0 });
-  }, 3000);
+  if (bowl) bowl.scheduleReturn();
+  else returnTimer = setTimeout(goHome, 3000);
+}
+function goHome() {
+  if (!offset.x && !offset.y) return;
+  returning.value = true;
+  Object.assign(offset, { x: 0, y: 0 });
 }
 
 // --- Bowl: inside a ComputerAppBowl, the bowl tilts this window (see Bowl.vue). ---
@@ -56,7 +62,7 @@ const bowl = inject("bowl", null);
 const face = ref(null);
 let hovered = false;
 // hover is tracked on the untilted outer box, so the tilting edge can't flicker it
-const win = { root, face, hovered: () => hovered };
+const win = { root, face, hovered: () => hovered, goHome };
 onMounted(() => bowl?.join(win));
 onUnmounted(() => {
   bowl?.leave(win);

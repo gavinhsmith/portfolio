@@ -25,7 +25,7 @@ const topRepos = computed(() => activity.value?.repos.slice(0, 4) ?? []);
         title="Welcome"
         icon="tabler:home-2"
         movable
-        class="-translate-x-3 md:translate-x-0 md:-translate-y-4 md:row-span-2 md:self-center h-auto!"
+        class="md:-translate-y-4 md:row-span-2 md:self-center h-auto!"
       >
         <div class="px-6 py-5 md:px-7 md:py-6 bg-honeydew text-ink-black">
           <h1
@@ -99,7 +99,7 @@ const topRepos = computed(() => activity.value?.repos.slice(0, 4) ?? []);
         title="Socials"
         icon="tabler:social"
         movable
-        class="translate-x-3 md:translate-y-4"
+        class="md:translate-x-3 md:translate-y-4"
       >
         <div
           class="w-full h-full flex flex-col justify-center p-4 gap-2 bg-ink-black text-porcelain text-xs md:text-md font-mono"
@@ -135,7 +135,7 @@ const topRepos = computed(() => activity.value?.repos.slice(0, 4) ?? []);
         title="Activity"
         icon="tabler:activity"
         movable
-        class="-translate-x-2 md:col-span-2 md:translate-x-6 md:translate-y-2"
+        class="md:col-span-2 md:translate-x-6 md:translate-y-2"
       >
         <div class="px-4 py-3 bg-ink-black text-porcelain text-xs font-mono">
           <p class="opacity-70 mb-2.5">Pushes to GitHub over the last two weeks</p>

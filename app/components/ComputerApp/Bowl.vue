@@ -8,6 +8,7 @@
 // scene. One loop updates every window straight on its element, eased in JS.
 //
 // Windows join by being ComputerAppContainers inside this component (see provide below).
+// The bowl also times their return: after the last drag, all moved windows go home together.
 // Desktop mouse/trackpad only, and off for reduced motion: otherwise windows stay flat.
 const PERSPECTIVE = 1100; // px, camera distance
 const BOWL = 1.1; // bowl radius, in multiples of the larger screen side (smaller = steeper)
@@ -16,13 +17,22 @@ const WANDER = 0.35; // idle gaze range, as a fraction of half the bowl
 const IDLE_MS = 2500; // cursor still this long -> start looking around
 const EASE_MS = 220; // smoothing time constant for gaze and hover
 
+const RETURN_MS = 3000; // moved windows all head home together this long after the last drag
+
 const el = ref(null);
-const windows = new Set(); // { root, face, hovered(), flat }
+const windows = new Set(); // { root, face, hovered(), goHome(), flat }
+let returnTimer;
 provide("bowl", {
   join: (win) => windows.add(Object.assign(win, { flat: 0 })),
   leave: (win) => {
     windows.delete(win);
     win.face.value?.style.removeProperty("transform");
+  },
+  // one shared timer: any grab pauses it, any release restarts it
+  holdReturn: () => clearTimeout(returnTimer),
+  scheduleReturn: () => {
+    clearTimeout(returnTimer);
+    returnTimer = setTimeout(() => windows.forEach((w) => w.goHome()), RETURN_MS);
   },
 });
 
@@ -101,6 +111,7 @@ onMounted(() => {
   frame = requestAnimationFrame(tick); // paused by the browser in hidden tabs
 });
 onUnmounted(() => {
+  clearTimeout(returnTimer);
   cancelAnimationFrame(frame);
   removeEventListener("pointermove", onPointer);
   document.documentElement.removeEventListener("pointerleave", onLeave);
