@@ -1,4 +1,4 @@
-// All public repos on the account, most recently pushed first. Cached 10 min.
+// All public repos on the account, most recently pushed first. Cached 1h (in KV on Cloudflare).
 export default defineCachedEventHandler(
   async () => {
     // ponytail: one page of 100; paginate if the account ever passes 100 repos
@@ -16,5 +16,9 @@ export default defineCachedEventHandler(
       archived: r.archived,
     }));
   },
-  { name: "github-repos", maxAge: 60 * 10, swr: true },
+  {
+    name: "github-repos",
+    maxAge: 60 * 60, // 1h: keeps KV writes well under the free tier's 1000/day
+    swr: true,
+  },
 );

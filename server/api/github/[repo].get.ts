@@ -1,7 +1,7 @@
 // GitHub repo names: letters, digits, ".", "_", "-", up to 100 chars.
 const VALID_REPO = /^[a-z0-9._-]{1,100}$/;
 
-// Cached for 10 min per repo, including "not found" (null), so neither page
+// Cached for 1h per repo (in KV on Cloudflare), including "not found" (null), so neither page
 // views nor junk URLs hit GitHub repeatedly. Errors (e.g. rate limits) aren't
 // cached; with swr the last good copy keeps being served meanwhile.
 const getProject = defineCachedFunction(
@@ -55,7 +55,7 @@ const getProject = defineCachedFunction(
   {
     name: "github-project",
     getKey: (repo: string) => repo,
-    maxAge: 60 * 10,
+    maxAge: 60 * 60, // 1h: keeps KV writes well under the free tier's 1000/day
     swr: true,
   },
 );
