@@ -8,6 +8,8 @@
       </FilterDisplacement>
     </div>
 
+    <NavBar path="/index.md" />
+
     <div
       class="w-full h-dvh flex flex-col md:flex-row gap-2 md:gap-4 items-center justify-center overflow-hidden px-4"
     >
