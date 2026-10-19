@@ -11,6 +11,16 @@ if (error.value) {
 }
 const { project, readme, release, commits } = data.value;
 
+// 14-day push strip for the git log window (same data as the home page's Activity).
+// Not essential: if it fails to load, the strip is just left out.
+const { data: activity } = await useFetch("/api/activity");
+const pushes = computed(() => {
+  if (!activity.value) return null;
+  const mine = activity.value.repos.find((r) => r.name.toLowerCase() === project.name.toLowerCase());
+  const days = mine?.days ?? Array(activity.value.dates.length).fill(0);
+  return { days, total: days.reduce((a, b) => a + b, 0) };
+});
+
 const updated = fmtDate(project.pushed_at);
 </script>
 
@@ -117,6 +127,16 @@ const updated = fmtDate(project.pushed_at);
           icon="tabler:git-branch"
           class="order-4"
         >
+          <div v-if="pushes" class="px-4 pt-3 bg-ink-black text-porcelain text-xs font-mono">
+            <p class="opacity-70 mb-2">
+              {{ pushes.total }} push{{ pushes.total === 1 ? "" : "es" }} in the last two weeks
+            </p>
+            <ActivityStrip :days="pushes.days" :dates="activity.dates" />
+            <div class="flex justify-between mt-1 opacity-50 text-[10px]" aria-hidden="true">
+              <span>{{ activity.dates[0] }}</span>
+              <span>today</span>
+            </div>
+          </div>
           <ol class="px-4 py-3 bg-ink-black text-porcelain text-xs font-mono">
             <li
               v-for="(c, i) in commits"
