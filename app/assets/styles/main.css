@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
   --font-serif: "Amiri";
@@ -24,5 +25,50 @@
   to {
     /* must be a multiple of the 64px tile in pattern.svg, or the loop jumps */
     background-position: 640px 640px;
+  }
+}
+
+/* Fixes for GitHub-rendered markdown (READMEs, release notes), layered on `prose` */
+.markdown {
+  /* GitHub's permalink icon next to every heading */
+  .anchor {
+    display: none;
+  }
+
+  /* inline code: no backticks, light chip instead */
+  :not(pre) > code {
+    padding: 0.1em 0.35em;
+    border-radius: 0.25rem;
+    background: color-mix(in srgb, currentColor 12%, transparent);
+    font-weight: normal;
+    &::before,
+    &::after {
+      content: none;
+    }
+  }
+
+  /* badges and other images inside a paragraph stay inline */
+  p img {
+    display: inline;
+    margin: 0;
+  }
+
+  /* wide tables scroll instead of overflowing the window */
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  /* GitHub's syntax highlighting classes */
+  .pl-c {
+    opacity: 0.6;
+    font-style: italic;
+  }
+  .pl-k {
+    color: var(--color-harvest-orange);
+  }
+  .pl-s,
+  .pl-pds {
+    color: var(--color-golden-glow);
   }
 }

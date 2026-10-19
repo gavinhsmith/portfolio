@@ -6,6 +6,15 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/fonts", "@nuxt/icon"],
   css: ["~/assets/styles/main.css"],
+  runtimeConfig: {
+    // Optional; set NUXT_GITHUB_TOKEN to raise GitHub's rate limit (60/hr -> 5000/hr)
+    githubToken: "",
+  },
+  // Cache project pages + their API for 10 min (CDN/ISR on Vercel, in-server elsewhere)
+  routeRules: {
+    "/projects/**": { swr: 600 },
+    "/api/github/**": { swr: 600 },
+  },
   vite: {
     plugins: [tailwindcss()],
   },
