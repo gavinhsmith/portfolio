@@ -16,16 +16,15 @@ const topRepos = computed(() => activity.value?.repos.slice(0, 4) ?? []);
 
 <template>
   <div class="h-full">
-    <!-- Windows are direct grid children (no transformed wrappers), so a grabbed
-         window can rise above the others. -->
-    <div
+    <!-- The bowl tilts the windows inside it (desktop). Windows are its direct grid children
+         (no transformed wrappers), so a grabbed window can rise above the others. -->
+    <ComputerAppBowl
       class="w-full h-full grid grid-cols-[minmax(0,20rem)] md:grid-cols-[24rem_18rem] justify-center-safe content-center-safe items-start gap-2 md:gap-4 overflow-x-hidden overflow-y-auto px-4 py-24 md:py-28"
     >
       <ComputerAppContainer
         title="Welcome"
         icon="tabler:home-2"
         movable
-        tilt
         class="-translate-x-3 md:translate-x-0 md:-translate-y-4 md:row-span-2 md:self-center h-auto!"
       >
         <div class="px-6 py-5 md:px-7 md:py-6 bg-honeydew text-ink-black">
@@ -58,7 +57,6 @@ const topRepos = computed(() => activity.value?.repos.slice(0, 4) ?? []);
         title="Currently"
         icon="tabler:bulb"
         movable
-        tilt
         class="md:translate-y-4"
       >
         <div
@@ -101,7 +99,6 @@ const topRepos = computed(() => activity.value?.repos.slice(0, 4) ?? []);
         title="Socials"
         icon="tabler:social"
         movable
-        tilt
         class="translate-x-3 md:translate-y-4"
       >
         <div
@@ -138,7 +135,6 @@ const topRepos = computed(() => activity.value?.repos.slice(0, 4) ?? []);
         title="Activity"
         icon="tabler:activity"
         movable
-        tilt
         class="-translate-x-2 md:col-span-2 md:translate-x-6 md:translate-y-2"
       >
         <div class="px-4 py-3 bg-ink-black text-porcelain text-xs font-mono">
@@ -174,6 +170,6 @@ const topRepos = computed(() => activity.value?.repos.slice(0, 4) ?? []);
           </ul>
         </div>
       </ComputerAppContainer>
-    </div>
+    </ComputerAppBowl>
   </div>
 </template>
