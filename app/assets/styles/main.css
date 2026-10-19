@@ -22,6 +22,7 @@
     background-position: 0 0;
   }
   to {
-    background-position: 100% 100%;
+    /* must be a multiple of the 64px tile in pattern.svg, or the loop jumps */
+    background-position: 640px 640px;
   }
 }
