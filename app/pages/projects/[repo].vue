@@ -36,9 +36,10 @@ const updated = fmtDate(project.pushed_at);
            around the README: name, release, README, git log -->
       <!-- desktop: sticks just below the nav fade (sticky offsets start inside the page's 7rem top
            padding; -top-3 cancels p-3); windows keep full height and the sidebar scrolls if taller
-           than the screen. p-3/-m-3 leaves room for the window shadows inside the scroll box. -->
+           than the screen. p-3/-m-3 leaves room for the window shadows inside the scroll box, and
+           the 0.75rem edge fade sits in that padding, so it only shows on content scrolled past it. -->
       <div
-        class="contents md:flex md:flex-col md:w-70 md:shrink-0 md:gap-4 md:sticky md:-top-3 md:max-h-[calc(100dvh-7.5rem)] md:overflow-y-auto md:p-3 md:-m-3 md:*:shrink-0"
+        class="contents md:flex md:flex-col md:w-70 md:shrink-0 md:gap-4 md:sticky md:-top-3 md:max-h-[calc(100dvh-7.5rem)] md:overflow-y-auto md:p-3 md:-m-3 md:*:shrink-0 md:[--side-fade:linear-gradient(to_bottom,transparent,black_0.75rem,black_calc(100%_-_0.75rem),transparent)] md:[-webkit-mask-image:var(--side-fade)] md:[mask-image:var(--side-fade)]"
       >
         <ComputerAppContainer
           :title="project.name"
