@@ -24,7 +24,8 @@
   }
   to {
     /* must be a multiple of the tile size (64px, shrunk by --bg-scale on 3x screens), or the loop jumps */
-    background-position: calc(640px / var(--bg-scale, 1)) calc(640px / var(--bg-scale, 1));
+    background-position: calc(640px / var(--bg-scale, 1))
+      calc(640px / var(--bg-scale, 1));
   }
 }
 

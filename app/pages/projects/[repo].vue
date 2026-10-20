@@ -16,7 +16,9 @@ const { project, readme, release, commits } = data.value;
 const { data: activity } = await useFetch("/api/activity");
 const pushes = computed(() => {
   if (!activity.value) return null;
-  const mine = activity.value.repos.find((r) => r.name.toLowerCase() === project.name.toLowerCase());
+  const mine = activity.value.repos.find(
+    (r) => r.name.toLowerCase() === project.name.toLowerCase(),
+  );
   const days = mine?.days ?? Array(activity.value.dates.length).fill(0);
   return { days, total: days.reduce((a, b) => a + b, 0) };
 });
@@ -74,7 +76,10 @@ const updated = fmtDate(project.pushed_at);
             <span class="flex items-center gap-2">
               <Icon name="tabler:clock" /> Updated {{ updated }}
             </span>
-            <div v-if="project.topics?.length" class="flex flex-wrap gap-1 mt-1">
+            <div
+              v-if="project.topics?.length"
+              class="flex flex-wrap gap-1 mt-1"
+            >
               <span
                 v-for="topic in project.topics"
                 :key="topic"
@@ -110,7 +115,9 @@ const updated = fmtDate(project.pushed_at);
                 fmtDate(release.published_at)
               }}</span>
             </div>
-            <span v-if="release.name" class="font-bold">{{ release.name }}</span>
+            <span v-if="release.name" class="font-bold">{{
+              release.name
+            }}</span>
             <a
               :href="release.html_url"
               target="_blank"
@@ -127,12 +134,19 @@ const updated = fmtDate(project.pushed_at);
           icon="tabler:git-branch"
           class="order-4"
         >
-          <div v-if="pushes" class="px-4 pt-3 bg-ink-black text-porcelain text-xs font-mono">
+          <div
+            v-if="pushes"
+            class="px-4 pt-3 bg-ink-black text-porcelain text-xs font-mono"
+          >
             <p class="opacity-70 mb-2">
-              {{ pushes.total }} push{{ pushes.total === 1 ? "" : "es" }} in the last two weeks
+              {{ pushes.total }} push{{ pushes.total === 1 ? "" : "es" }} in the
+              last two weeks
             </p>
             <ActivityStrip :days="pushes.days" :dates="activity.dates" />
-            <div class="flex justify-between mt-1 opacity-50 text-[10px]" aria-hidden="true">
+            <div
+              class="flex justify-between mt-1 opacity-50 text-[10px]"
+              aria-hidden="true"
+            >
               <span>{{ activity.dates[0] }}</span>
               <span>today</span>
             </div>
@@ -154,11 +168,19 @@ const updated = fmtDate(project.pushed_at);
               />
               <span
                 class="absolute left-[4px] top-1/2 -translate-y-1/2 w-2 h-2 rounded-full border-2 border-golden-glow"
-                :class="c.parents.length > 1 ? 'bg-ink-black' : 'bg-golden-glow'"
+                :class="
+                  c.parents.length > 1 ? 'bg-ink-black' : 'bg-golden-glow'
+                "
               />
-              <a :href="c.html_url" target="_blank" class="block hover:underline">
+              <a
+                :href="c.html_url"
+                target="_blank"
+                class="block hover:underline"
+              >
                 <span class="flex items-baseline gap-2">
-                  <span class="text-harvest-orange">{{ c.sha.slice(0, 7) }}</span>
+                  <span class="text-harvest-orange">{{
+                    c.sha.slice(0, 7)
+                  }}</span>
                   <span
                     v-if="i === 0"
                     class="px-1 rounded bg-deep-twilight text-golden-glow"

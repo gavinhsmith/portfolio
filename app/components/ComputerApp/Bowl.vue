@@ -32,7 +32,10 @@ provide("bowl", {
   holdReturn: () => clearTimeout(returnTimer),
   scheduleReturn: () => {
     clearTimeout(returnTimer);
-    returnTimer = setTimeout(() => windows.forEach((w) => w.goHome()), RETURN_MS);
+    returnTimer = setTimeout(
+      () => windows.forEach((w) => w.goHome()),
+      RETURN_MS,
+    );
   },
 });
 
@@ -66,7 +69,8 @@ function tick(now) {
 
   const R = BOWL * Math.max(innerWidth, innerHeight);
   for (const win of windows) {
-    const root = win.root.value, face = win.face.value;
+    const root = win.root.value,
+      face = win.face.value;
     if (!root || !face) continue;
     win.flat += ((win.hovered() ? 1 : 0) - win.flat) * k;
     const live = 1 - win.flat;

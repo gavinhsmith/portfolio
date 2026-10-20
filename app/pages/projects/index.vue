@@ -1,5 +1,5 @@
 <script setup>
-const PINNED = ["evoker", "tinclib", "titrmlib", "hangout64"];
+const PINNED = ["evoker", "tinclib", "titrmlib", "workshop64"];
 
 const { data: repos, error } = await useFetch("/api/github");
 if (error.value) {
@@ -13,11 +13,15 @@ if (error.value) {
 // File list shows only repos pushed in the last ~6 months until "see more" is opened.
 const SIX_MONTHS = 1000 * 60 * 60 * 24 * 183;
 const isRecent = (repo) => Date.now() - new Date(repo.pushed_at) < SIX_MONTHS;
-const olderCount = computed(() => repos.value.filter((r) => !isRecent(r)).length);
+const olderCount = computed(
+  () => repos.value.filter((r) => !isRecent(r)).length,
+);
 const showAll = ref(false);
 
 const pinned = computed(() =>
-  PINNED.map((name) => repos.value.find((r) => r.name === name)).filter(Boolean),
+  PINNED.map((name) => repos.value.find((r) => r.name === name)).filter(
+    Boolean,
+  ),
 );
 </script>
 
@@ -74,7 +78,9 @@ const pinned = computed(() =>
                 class="shrink-0 text-prussian-blue"
               />
               <span class="truncate">{{ repo.name }}/</span>
-              <span v-if="repo.archived" class="opacity-60 italic">archived</span>
+              <span v-if="repo.archived" class="opacity-60 italic"
+                >archived</span
+              >
             </span>
             <span class="hidden md:block opacity-70">{{
               repo.language ?? "—"
@@ -90,7 +96,9 @@ const pinned = computed(() =>
             class="w-full px-4 py-2 border-t border-alabaster-grey flex items-center gap-2 opacity-70 hover:opacity-100 hover:underline cursor-pointer"
             @click="showAll = !showAll"
           >
-            <Icon :name="showAll ? 'tabler:chevron-up' : 'tabler:chevron-down'" />
+            <Icon
+              :name="showAll ? 'tabler:chevron-up' : 'tabler:chevron-down'"
+            />
             {{ showAll ? "see less" : `see more (${olderCount} older)` }}
           </button>
         </div>

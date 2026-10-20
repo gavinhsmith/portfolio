@@ -43,8 +43,8 @@ const topRepos = computed(() => activity.value?.repos.slice(0, 4) ?? []);
             <strong class="text-prussian-blue">Gavin Smith</strong>
             (he/him), a Computer Science student at the University of
             Wisconsin-Madison
-            <span class="italic">(Class of 2028)</span>, pursuing a
-            certificate in Physics.
+            <span class="italic">(Class of 2028)</span>, pursuing a certificate
+            in Physics.
           </p>
           <p class="text-sm md:text-base mt-2 flex items-center gap-1">
             <Icon name="tabler:map-pin" />
@@ -138,12 +138,17 @@ const topRepos = computed(() => activity.value?.repos.slice(0, 4) ?? []);
         class="md:col-span-2 md:translate-x-6 md:translate-y-2"
       >
         <div class="px-4 py-3 bg-ink-black text-porcelain text-xs font-mono">
-          <p class="opacity-70 mb-2.5">Pushes to GitHub over the last two weeks</p>
+          <p class="opacity-70 mb-2.5">
+            Pushes to GitHub over the last two weeks
+          </p>
 
           <!-- placeholder rows keep the window's size steady until data arrives -->
           <ul v-if="!activity" class="flex flex-col gap-2" aria-hidden="true">
             <li v-for="i in 3" :key="i" :class="row.grid">
-              <span :class="row.name" class="h-3 w-20 rounded-sm bg-deep-twilight" />
+              <span
+                :class="row.name"
+                class="h-3 w-20 rounded-sm bg-deep-twilight"
+              />
               <ActivityStrip :class="row.strip" />
             </li>
           </ul>
@@ -154,14 +159,32 @@ const topRepos = computed(() => activity.value?.repos.slice(0, 4) ?? []);
 
           <ul v-else class="flex flex-col gap-2">
             <li v-for="repo in topRepos" :key="repo.name">
-              <NuxtLink :to="`/projects/${repo.name}`" class="group" :class="row.grid">
-                <span :class="row.name" class="truncate group-hover:underline">{{ repo.name }}</span>
-                <ActivityStrip :class="row.strip" :days="repo.days" :dates="activity.dates" />
-                <span :class="row.last" class="opacity-70">{{ repo.last }}</span>
+              <NuxtLink
+                :to="`/projects/${repo.name}`"
+                class="group"
+                :class="row.grid"
+              >
+                <span
+                  :class="row.name"
+                  class="truncate group-hover:underline"
+                  >{{ repo.name }}</span
+                >
+                <ActivityStrip
+                  :class="row.strip"
+                  :days="repo.days"
+                  :dates="activity.dates"
+                />
+                <span :class="row.last" class="opacity-70">{{
+                  repo.last
+                }}</span>
               </NuxtLink>
             </li>
             <!-- axis: which end of the strip is which -->
-            <li :class="row.grid" class="opacity-50 text-[10px]" aria-hidden="true">
+            <li
+              :class="row.grid"
+              class="opacity-50 text-[10px]"
+              aria-hidden="true"
+            >
               <span :class="row.strip" class="flex justify-between">
                 <span>{{ activity.dates[0] }}</span>
                 <span>today</span>
