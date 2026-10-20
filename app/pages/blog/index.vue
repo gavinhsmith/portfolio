@@ -8,6 +8,20 @@ if (error.value) {
   });
 }
 
+const { siteUrl } = useRuntimeConfig().public;
+const description =
+  "Gavin Smith's blog: Explanations and walk-throughs on my projects!";
+useSeoMeta({
+  title: "Blog | Gavin Smith",
+  description,
+  ogTitle: "Blog | Gavin Smith",
+  ogDescription: description,
+  ogType: "website",
+  ogUrl: `${siteUrl}/blog`,
+});
+// ?q= and ?page= variants all point back at the plain /blog
+useHead({ link: [{ rel: "canonical", href: `${siteUrl}/blog` }] });
+
 // Search and page live in the URL (?q=…&page=…), so going back from an article keeps your place.
 const PER_PAGE = 10;
 const route = useRoute();
@@ -68,7 +82,10 @@ const pageLink = (p) => ({
             class="grid grid-cols-[1fr_auto] gap-x-4 px-4 py-1.5 hover:bg-alabaster-grey/60"
           >
             <span class="flex items-center gap-2 min-w-0">
-              <Icon name="tabler:file-text" class="shrink-0 text-prussian-blue" />
+              <Icon
+                name="tabler:file-text"
+                class="shrink-0 text-prussian-blue"
+              />
               <span class="truncate">{{ a.title }}</span>
               <span
                 v-for="tag in a.tags"
@@ -78,9 +95,9 @@ const pageLink = (p) => ({
                 {{ tag }}
               </span>
             </span>
-            <span class="opacity-70 whitespace-nowrap">{{
+            <time :datetime="a.date" class="opacity-70 whitespace-nowrap">{{
               fmtDate(`${a.date}T12:00`)
-            }}</span>
+            }}</time>
             <!-- indented to line up with the title, past the icon -->
             <span
               v-if="a.description"
@@ -123,10 +140,13 @@ const pageLink = (p) => ({
                 class="px-1.5 rounded bg-prussian-blue text-honeydew font-bold"
                 >{{ p }}</span
               >
-              <NuxtLink v-else :to="pageLink(p)"
-                aria-current="false" class="px-1.5 hover:underline">{{
-                p
-              }}</NuxtLink>
+              <NuxtLink
+                v-else
+                :to="pageLink(p)"
+                aria-current="false"
+                class="px-1.5 hover:underline"
+                >{{ p }}</NuxtLink
+              >
             </template>
             <template
               v-for="[label, p, name] in [

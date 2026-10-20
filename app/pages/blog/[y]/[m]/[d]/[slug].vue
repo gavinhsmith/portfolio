@@ -11,9 +11,41 @@ if (error.value) {
     fatal: true,
   });
 }
+const { siteUrl } = useRuntimeConfig().public;
+const url = `${siteUrl}/blog/${y}/${m}/${d}/${slug}`;
+const { title, description, date, tags } = article.value;
+
 useSeoMeta({
-  title: `${article.value.title} | Gavin Smith`,
-  description: article.value.description,
+  title: `${title} | Gavin Smith`,
+  description,
+  ogTitle: title,
+  ogDescription: description,
+  ogType: "article",
+  ogUrl: url,
+  ogSiteName: "Gavin Smith",
+  articlePublishedTime: date,
+  articleAuthor: [siteUrl],
+  articleTag: tags,
+  twitterCard: "summary",
+});
+useHead({
+  link: [{ rel: "canonical", href: url }],
+  script: [
+    {
+      type: "application/ld+json",
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: title,
+        description,
+        datePublished: date,
+        keywords: tags,
+        url,
+        mainEntityOfPage: url,
+        author: { "@type": "Person", name: "Gavin Smith", url: siteUrl },
+      }),
+    },
+  ],
 });
 </script>
 
@@ -25,7 +57,7 @@ useSeoMeta({
           <div
             class="mb-2 flex flex-wrap items-center gap-2 text-xs font-mono text-ink-black/60"
           >
-            {{ fmtDate(`${article.date}T12:00`) }}
+            <time :datetime="article.date">{{ fmtDate(`${article.date}T12:00`) }}</time>
             <span
               v-for="tag in article.tags"
               :key="tag"

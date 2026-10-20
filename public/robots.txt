@@ -1,2 +1,4 @@
 User-Agent: *
 Disallow:
+
+Sitemap: https://gavinhsmith.com/sitemap.xml

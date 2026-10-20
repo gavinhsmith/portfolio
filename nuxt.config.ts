@@ -1,4 +1,11 @@
 import tailwindcss from "@tailwindcss/vite";
+import { readdirSync } from "node:fs";
+
+// Every article URL, read from server/assets/blog/<yyyy>/<mm>/<dd>/<slug>.md, so they get prerendered.
+const articleRoutes = readdirSync("server/assets/blog", { recursive: true })
+  .map((f) => String(f).replace(/\\/g, "/"))
+  .filter((f) => f.endsWith(".md"))
+  .map((f) => `/blog/${f.slice(0, -3)}`);
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -9,6 +16,10 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // Optional; set NUXT_GITHUB_TOKEN to raise GitHub's rate limit (60/hr -> 5000/hr)
     githubToken: "",
+    public: {
+      // Used for canonical links, the sitemap and the RSS feed
+      siteUrl: "https://gavinhsmith.com",
+    },
   },
   routeRules: {
     // Static page: served as a plain asset, the Worker never runs for it
@@ -16,6 +27,11 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: "cloudflare_module",
+    // Articles are bundled at build time anyway, so serve them (and the sitemap/feed) as static files.
+    // The /blog index stays server-rendered: its ?q= and ?page= change the HTML.
+    prerender: {
+      routes: ["/sitemap.xml", "/feed.xml", ...articleRoutes],
+    },
     cloudflare: {
       deployConfig: true,
       nodeCompat: true,
@@ -44,7 +60,10 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: "en",
       },
-      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        { rel: "alternate", type: "application/rss+xml", title: "Gavin Smith's Blog", href: "/feed.xml" },
+      ],
     },
   },
   icon: {
