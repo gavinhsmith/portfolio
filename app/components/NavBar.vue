@@ -10,6 +10,12 @@ const items = computed(() => [
     child:
       route.name === "projects-repo" ? `/${route.params.repo}.md` : undefined,
   },
+  {
+    to: "/blog",
+    label: "/blog.md",
+    child:
+      route.name === "blog-y-m-d-slug" ? `/${route.params.slug}.md` : undefined,
+  },
 ]);
 
 // the hidden bold ::after copy reserves the bold width, so bolding never shifts the layout

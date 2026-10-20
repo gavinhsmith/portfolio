@@ -101,3 +101,8 @@
     transform: none;
   }
 }
+
+/* highlight.js: keep the window's code background instead of the theme's */
+.markdown pre code.hljs {
+  background: transparent;
+}
