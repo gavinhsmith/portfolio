@@ -12,20 +12,27 @@ const row = {
 
 // The API returns every repo pushed to recently, most recent first; show the top 4.
 const topRepos = computed(() => activity.value?.repos.slice(0, 4) ?? []);
+
+// Articles ship with the build, so the latest one is fetched while prerendering and baked in.
+const { data: articles } = await useFetch("/api/blog");
+const latest = computed(() => articles.value?.[0]);
 </script>
 
 <template>
   <div class="h-full">
     <!-- The bowl tilts the windows inside it (desktop). Windows are its direct grid children
-         (no transformed wrappers), so a grabbed window can rise above the others. -->
+         (no transformed wrappers), so a grabbed window can rise above the others.
+         Layout: phone, one column. md: two columns. lg+: three columns in two rows, so it fits
+         a laptop screen without scrolling: Welcome | Currently | Latest post, then Activity | Socials.
+         Windows use h-auto! so they keep their own height instead of stretching to the row. -->
     <ComputerAppBowl
-      class="w-full h-full grid grid-cols-[minmax(0,20rem)] md:grid-cols-[24rem_18rem] justify-center-safe content-center-safe items-start gap-2 md:gap-4 overflow-x-hidden overflow-y-auto px-4 py-24 md:py-28"
+      class="w-full h-full grid grid-cols-[minmax(0,20rem)] md:grid-cols-[24rem_18rem] lg:grid-cols-[22rem_16rem_16rem] xl:grid-cols-[24rem_18rem_18rem] justify-center-safe content-center-safe items-start gap-2 md:gap-4 overflow-x-hidden overflow-y-auto px-4 py-24 md:py-28"
     >
       <ComputerAppContainer
         title="Welcome"
         icon="tabler:home-2"
         movable
-        class="md:-translate-y-4 md:row-span-2 md:self-center h-auto!"
+        class="md:-translate-y-4 md:row-span-2 lg:row-span-1 md:self-center h-auto!"
       >
         <div class="px-6 py-5 md:px-7 md:py-6 bg-honeydew text-ink-black">
           <h1
@@ -57,7 +64,7 @@ const topRepos = computed(() => activity.value?.repos.slice(0, 4) ?? []);
         title="Currently"
         icon="tabler:bulb"
         movable
-        class="md:translate-y-4"
+        class="md:translate-y-4 h-auto!"
       >
         <div
           class="w-full h-full flex flex-col justify-center px-4 py-2 md:px-4 gap-1 md:gap-2.5 bg-ink-black text-porcelain text-md font-mono"
@@ -99,7 +106,7 @@ const topRepos = computed(() => activity.value?.repos.slice(0, 4) ?? []);
         title="Socials"
         icon="tabler:social"
         movable
-        class="md:translate-x-3 md:translate-y-4"
+        class="lg:col-start-3 lg:row-start-2 md:translate-x-3 md:translate-y-4 h-auto!"
       >
         <div
           class="w-full h-full flex flex-col justify-center p-4 gap-2 bg-ink-black text-porcelain text-xs md:text-md font-mono"
@@ -132,10 +139,40 @@ const topRepos = computed(() => activity.value?.repos.slice(0, 4) ?? []);
       </ComputerAppContainer>
 
       <ComputerAppContainer
+        v-if="latest"
+        title="Latest post"
+        icon="tabler:notebook"
+        movable
+        class="md:col-span-2 lg:col-span-1 lg:col-start-3 lg:row-start-1 md:translate-x-2 lg:-translate-x-2 md:translate-y-3 lg:-translate-y-2 h-auto!"
+      >
+        <div
+          class="w-full h-full flex flex-col gap-1 p-4 bg-ink-black text-porcelain text-xs font-mono"
+        >
+          <span class="opacity-60">{{ fmtDate(`${latest.date}T12:00`) }}</span>
+          <NuxtLink
+            :to="latest.path"
+            class="text-sm font-bold hover:underline"
+            >{{ latest.title }}</NuxtLink
+          >
+          <p v-if="latest.description" class="opacity-70 line-clamp-2">
+            {{ latest.description }}
+          </p>
+          <div class="mt-auto pt-1 flex justify-between">
+            <NuxtLink to="/blog" class="opacity-70 hover:underline"
+              >all posts</NuxtLink
+            >
+            <NuxtLink :to="latest.path" class="hover:underline"
+              >read →</NuxtLink
+            >
+          </div>
+        </div>
+      </ComputerAppContainer>
+
+      <ComputerAppContainer
         title="Activity"
         icon="tabler:activity"
         movable
-        class="md:col-span-2 md:translate-x-6 md:translate-y-2"
+        class="md:col-span-2 lg:col-start-1 lg:row-start-2 md:translate-x-6 md:translate-y-2"
       >
         <div class="px-4 py-3 bg-ink-black text-porcelain text-xs font-mono">
           <p class="opacity-70 mb-2.5">
