@@ -18,6 +18,10 @@ const items = computed(() => [
   },
 ]);
 
+// Characters to the left of each item (for the sub-item's max width, see the template).
+const charsBefore = (i) =>
+  items.value.slice(0, i).reduce((n, item) => n + item.label.length, 0);
+
 // the hidden bold ::after copy reserves the bold width, so bolding never shifts the layout
 const noShift =
   "inline-flex flex-col after:content-[attr(data-label)] after:font-bold after:h-0 after:overflow-hidden after:invisible after:select-none";
@@ -25,10 +29,16 @@ const noShift =
 
 <template>
   <nav
-    class="fixed top-0 left-0 z-10 w-full p-5 md:p-8 bg-transparent text-white font-mono text-sm flex flex-row items-center gap-4"
+    class="fixed top-0 left-0 z-10 w-full [--pad:1.25rem] md:[--pad:2rem] [--gap:0.75rem] sm:[--gap:1rem] p-(--pad) gap-(--gap) bg-transparent text-white font-mono text-sm max-[359px]:text-xs flex flex-row items-center"
   >
     <img src="/favicon.svg" alt="" class="w-5 h-5 brightness-0 invert" />
-    <span v-for="item in items" :key="item.to" class="relative">
+    <!-- not positioned, so the sub-item's containing block is the whole nav (see below) -->
+    <span
+      v-for="(item, i) in items"
+      :key="item.to"
+      class="inline-flex flex-col"
+      :style="{ '--n': i + 1, '--chars': charsBefore(i) }"
+    >
       <NuxtLink
         :to="item.to"
         :data-label="item.label"
@@ -37,10 +47,14 @@ const noShift =
       >
         {{ item.label }}
       </NuxtLink>
-      <!-- sub-item hangs below, out of flow, so the nav's height (and its fade) don't change -->
+      <!-- sub-item hangs below, out of flow, so the nav's height (and its fade) don't change.
+           No left/top: it keeps its in-flow spot (the item's top-left, then one line down).
+           Max width = nav width minus everything left of the item (padding, logo, gaps, and the
+           labels before it, exact in ch since the font is monospace) minus the right padding,
+           so a long slug ends in "…" instead of running off a phone screen. -->
       <span
         v-if="item.child"
-        class="absolute top-full left-0 pl-[1.071em] whitespace-nowrap font-bold"
+        class="absolute mt-[1lh] max-w-[calc(100%-2*var(--pad)-1.25rem-var(--n)*var(--gap)-var(--chars)*1ch)] pl-[1.071em] font-bold"
         aria-current="page"
       >
         <!-- tree branch drawn as an L: starts right under the parent's "/", turns into the
@@ -51,7 +65,7 @@ const noShift =
           class="absolute left-[0.3em] -top-[0.064em] h-[calc(50%+0.064em)] w-[0.55em] border-l border-b border-white/50 rounded-bl-[3px]"
           aria-hidden="true"
         />
-        {{ item.child }}
+        <span class="block truncate">{{ item.child }}</span>
       </span>
     </span>
   </nav>
